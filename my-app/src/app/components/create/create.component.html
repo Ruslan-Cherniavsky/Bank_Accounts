@@ -1,0 +1,35 @@
+<div class="max-w-2xl container mx-auto pt-5 flex items-center">
+
+    <button class="py-2 px-4 m-6 bg-blue-400 text-white rounded" type="submit"
+        (click)="withdrawalHandler()">Withdrawal</button>
+    <button class="py-2 px-4  m-6 bg-blue-400 text-white rounded" type="submit"
+        (click)="depositHandler()">Deposit</button>
+    <button class="py-2 px-4  m-6 bg-blue-400 text-white rounded" type="submit"
+        (click)="hypotheclHandler()">Hypothec</button>
+</div>
+
+
+
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="flex items-center flex-col mb-2">
+
+    <input type="text" class="border w-full py-2 px-4 mb-2" placeholder="account_number"
+        formControlName="account_number">
+
+
+    <input *ngIf="deposit" type="text" class="border w-full py-2 px-4 mb-2" placeholder="deposit_sum"
+        formControlName="deposit_sum">
+
+    <input *ngIf="withdrawal" type="text" class="border w-full py-2 px-4 mb-2" placeholder="withdrawal_sum"
+        formControlName="withdrawal_sum">
+
+    <input *ngIf="hypothec" type="text" class="border w-full py-2 px-4 mb-2" placeholder="hypothec_sum"
+        formControlName="hypothec_sum">
+    <input *ngIf="hypothec" type="text" class="border w-full py-2 px-4 mb-2" placeholder="commission"
+        formControlName="commission">
+    <input *ngIf="hypothec" type="text" class="border w-full py-2 px-4 mb-2" placeholder="payments"
+        formControlName="payments">
+
+    <button class="py-2 px-4 bg-blue-600 text-white rounded " type="submit">Create Action</button>
+
+</form>

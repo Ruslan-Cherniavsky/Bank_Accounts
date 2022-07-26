@@ -1,0 +1,30 @@
+<div class="max-w-2xl container mx-auto pt-5">
+
+    <form [formGroup]="accountForm" (ngSubmit)="accountSubmit()">
+        <div class=" flex">
+            <input type="text" class="mb-2 border py-2 px-4 w-full"
+                placeholder="Enter Bank Account Number, Example: 222" formControlName="myTitle">
+
+
+            <button class="py-2 mb-2 px-4 bg-blue-600  text-white rounded" type="submit">Enter</button>
+        </div>
+
+        <button class="py-2 px-4 rounded bg-red-600 text-white flex ml-0 borrom-20" (click)="modalService.open()">Add
+            Action</button>
+
+    </form>
+
+
+    <h1 class="font-bold mb-2 text-center text-lg">{{ title | titlecase}}</h1>
+
+
+    <p *ngIf="loading" class="text-center text-lg" text-lg> Loading...</p>
+
+    <allActions *ngFor="let action of actions$ | async; let i = index" [actions]="action"></allActions>
+
+</div>
+
+
+<app-modal *ngIf="modalService.isVisible$ | async" title="Create Action">
+    <app-create></app-create>
+</app-modal>
